@@ -9,7 +9,7 @@ function PeopleController($http) {
   controller.listPeople = function(){
     console.log('Listing people');
     $http.get('/people').then(function(response){
-      console.log('response', response);
+      console.log('GET response', response);
       controller.people = response.data;
     }, function(error){
       console.log('error making request', error);
@@ -17,10 +17,14 @@ function PeopleController($http) {
   };
 
   controller.addPerson = function() {
-    var data = {name: controller.name};
+    var data = {
+      name: controller.name,
+      hometown: controller.hometown,
+      favoriteMovie: controller.fav
+    };
 
     $http.post('/people', data).then(function(response){
-      console.log('response', response);
+      console.log('POST response', response);
     });
   };
 }
