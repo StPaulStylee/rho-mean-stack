@@ -16,6 +16,14 @@ function PeopleController($http) {
     });
   };
 
+  controller.personDetails = function () {
+    $http.get('/people').then(function(reponse){
+      contorller.people = response.data;
+    }, function(error) {
+      console.log('Error making GET request', error);
+    });
+  };
+
   controller.addPerson = function() {
     var data = {
       name: controller.name,

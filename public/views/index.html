@@ -14,13 +14,11 @@
 <body ng-controller="PeopleController as ctrl">
   <button ng-click="ctrl.listPeople()">Get People</button>
 
-  <ul>
-    <li ng-repeat="person in ctrl.people">
-      <p>{{person.name}}</p>
-      <p>{{person.hometown}}</p>
-      <p>{{person.favoriteMovie}}</p>
-    </li>
-  </ul>
+  <select>
+    <option ng-repeat="person in ctrl.people | orderBy: 'favoriteMovie'" >
+      {{person.name}}.    Hometown: {{person.hometown}},   Favorite Movie: {{person.favoriteMovie}}
+    </option>
+  </select>
 
   <div>
 
